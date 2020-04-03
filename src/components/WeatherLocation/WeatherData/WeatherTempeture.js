@@ -1,24 +1,26 @@
 import React from 'react';
 import { WiDaySunny, WiCloud, WiCloudy, WiRain, WiSnow, WiWindy } from 'weather-icons-react';
-import {SUNNY, CLOUD, CLOUDY, WINTER, RAIN, SNOW, WINDY} from '../../../constants/weathers';
+import {SUNNY, CLOUD, CLOUDY, RAIN, SNOW, WINDY} from '../../../constants/weathers';
 import PropTypes from 'prop-types';
 import './styles.css';
 
+const sizeIcon = "40";
 const icons = {
-    SUNNY :  <WiDaySunny size={24} color="#000" />,
-    CLOUD : <WiCloud size={24} colo="#000" />,
-    CLOUDY : <WiCloudy size={24} colo="#000" />,
-    RAIN :  <WiRain size={24} color="#000" />,
-    SNOW : <WiSnow size={24} colo="#000" />,
-    WINDY :  <WiWindy size={24} color="#000" />
+    [SUNNY] :  <WiDaySunny className="wiicon" size={sizeIcon} />,
+    [CLOUD] : <WiCloud className="wiicon" size={sizeIcon} />,
+    [CLOUDY] : <WiCloudy className="wiicon" size={sizeIcon} />,
+    [RAIN] : <WiRain className="wiicon" size={sizeIcon} />,
+    [SNOW] : <WiSnow className="wiicon" size={sizeIcon} />,
+    [WINDY] : <WiWindy className="wiicon" size={sizeIcon} />
 };
 
 const getWeatherIcon = weatherState => {
+    console.log(weatherState);
     const icon = icons[weatherState];
     if (icon)
         return icon;
     else
-        return <WiDaySunny size={24} color="#000" />;
+        return <WiDaySunny className="wiicon" size={sizeIcon} />;
 };
 
 const WeatherTempeture = ({ tempeture, weatherState}) => (
@@ -26,7 +28,8 @@ const WeatherTempeture = ({ tempeture, weatherState}) => (
         {
             getWeatherIcon(weatherState)
         }
-        <span>{`${tempeture} C°`}</span>
+        <span className="tempeture">{tempeture}</span>
+        <span className="tempetureType"> C°</span>
     </div>
 )
 
