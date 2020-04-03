@@ -1,0 +1,7 @@
+export const SUNNY = "sunny"
+export const CLOUD = "cloud"
+export const CLOUDY = "cloudy"
+export const WINTER = "winter"
+export const RAIN = "rain"
+export const SNOW = "snow"
+export const WINDY = "windy"
