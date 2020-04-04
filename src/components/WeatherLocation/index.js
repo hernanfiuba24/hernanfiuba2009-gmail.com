@@ -3,7 +3,7 @@ import Location from './Location'
 import WeatherData from './WeatherData';
 import {SUNNY} from '../../constants/weathers';
 import transformWeather from '../../services/transformWeather';
-import {apiWeather} from '../../constants/open_weather_open_url'
+import {apiWeather} from '../../constants/open_weather_map_url';
 import './styles.css';
 
 const data = {
@@ -24,6 +24,7 @@ class WeatherLocation extends Component {
 
     updateWeatherData = () => {
         console.log("updated");
+        console.log(apiWeather);
         fetch(apiWeather).then(resolve => {
             return resolve.json();
         }).then( data => {
