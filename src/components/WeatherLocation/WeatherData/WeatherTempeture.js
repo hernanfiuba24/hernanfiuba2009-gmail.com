@@ -1,6 +1,6 @@
 import React from 'react';
-import { WiDaySunny, WiCloud, WiCloudy, WiRain, WiSnow, WiWindy } from 'weather-icons-react';
-import {SUNNY, CLOUD, CLOUDY, RAIN, SNOW, WINDY} from '../../../constants/weathers';
+import { WiDaySunny, WiCloud, WiRain, WiSnow, WiWindy, WiDayThunderstorm, WiRaindrops } from 'weather-icons-react';
+import {SUNNY, CLOUD, RAIN, SNOW, WINDY, THUNDER, DRIZZLE} from '../../../constants/weathers';
 import PropTypes from 'prop-types';
 import './styles.css';
 
@@ -8,10 +8,11 @@ const sizeIcon = "40";
 const icons = {
     [SUNNY] :  <WiDaySunny className="wiicon" size={sizeIcon} />,
     [CLOUD] : <WiCloud className="wiicon" size={sizeIcon} />,
-    [CLOUDY] : <WiCloudy className="wiicon" size={sizeIcon} />,
     [RAIN] : <WiRain className="wiicon" size={sizeIcon} />,
     [SNOW] : <WiSnow className="wiicon" size={sizeIcon} />,
-    [WINDY] : <WiWindy className="wiicon" size={sizeIcon} />
+    [WINDY] : <WiWindy className="wiicon" size={sizeIcon} />,
+    [THUNDER] : <WiDayThunderstorm className="wiicon" size={sizeIcon} />,
+    [DRIZZLE] : <WiRaindrops className="wiicon" size={sizeIcon} />
 };
 
 const getWeatherIcon = weatherState => {

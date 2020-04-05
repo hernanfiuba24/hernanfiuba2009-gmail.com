@@ -4,8 +4,9 @@ import WeatherLocation from '.'
 const LocationList = () => (
         <div>
             <WeatherLocation city="Buenos Aires,ar"></WeatherLocation>
-            <WeatherLocation city="Trujillo,pe"></WeatherLocation>
-            <WeatherLocation city="Bogota,col"></WeatherLocation>
+            <WeatherLocation city="Moscow,ru"></WeatherLocation>
+            <WeatherLocation city="Washington,us"></WeatherLocation>
+            <WeatherLocation city="Tokyo,jp"></WeatherLocation>
         </div>
 )
 
