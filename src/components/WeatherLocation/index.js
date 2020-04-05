@@ -44,7 +44,6 @@ class WeatherLocation extends Component {
                   <WeatherData data={data}/>:
                     <CircularProgress size={50}/>
                 }
-                <button onClick={this.updateWeatherData}>actualizar</button>
             </div>
         )
     }
