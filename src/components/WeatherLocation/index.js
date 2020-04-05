@@ -1,27 +1,23 @@
 import React, {Component} from 'react';
 import Location from './Location'
 import WeatherData from './WeatherData';
-import {SUNNY} from '../../constants/weathers';
 import transformWeather from '../../services/transformWeather';
 import {apiWeather} from '../../constants/open_weather_map_url';
 import './styles.css';
-
-const data = {
-    tempeture: 25,
-    weatherState: SUNNY,
-    humidity: 80,
-    wind: "10 m/s"
-};
 
 class WeatherLocation extends Component {
     constructor() {
         super();
         this.state = {
             cityName : "Buenos Aires",
-            data : data
+            data : null
         };
     }
 
+    componentDidMount() {
+        this.updateWeatherData();
+    }
+    
     updateWeatherData = () => {
         console.log("updated");
         console.log(apiWeather);
@@ -41,7 +37,7 @@ class WeatherLocation extends Component {
         return(
             <div className="weatherLocationCont">
                 <Location city={cityName}></Location>
-                <WeatherData data={data}></WeatherData>
+                {data != null ?  <WeatherData data={data}></WeatherData> : "Cargando..."}
                 <button onClick={this.updateWeatherData}>actualizar</button>
             </div>
         )
