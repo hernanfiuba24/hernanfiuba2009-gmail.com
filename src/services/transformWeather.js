@@ -2,7 +2,7 @@ import convert from 'convert-units';
 import {SUNNY, CLOUD, RAIN, SNOW,  THUNDER, DRIZZLE} from '../constants/weathers';
 
 const getTemp = kelvin => {
-    return convert(kelvin).from("K").to("C").toFixed(2)
+    return convert(kelvin).from("K").to("C").toFixed(0)
 }
 
 const getWeatherState = weather => {

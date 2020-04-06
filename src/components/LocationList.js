@@ -1,13 +1,15 @@
 import React from 'react'
-import WeatherLocation from '.'
+import WeatherLocation from './../components/WeatherLocation'
+
+import './styles.css';
 
 const strToComponents = (cities) => {
-    return cities.map(city => <WeatherLocation city={city} />)
+    return cities.map(city => <WeatherLocation key={city} city={city} />)
 };
 
 const LocationList = ({cities}) => {
     return(
-        <div>
+        <div className="locationList">
             {strToComponents(cities)}
         </div>
     );
