@@ -22,13 +22,10 @@ class WeatherLocation extends Component {
     
     updateWeatherData = () => {
         const apiWeather = getWeatherByCity(this.state.city);
-        console.log("updated");
-        console.log(apiWeather);
         fetch(apiWeather).then(resolve => {
             return resolve.json();
         }).then( data => {
             const newWeather = transformWeather(data);
-            console.log(newWeather)
             this.setState({
                 data: newWeather,
             })
@@ -36,9 +33,10 @@ class WeatherLocation extends Component {
     }
 
     render() {
+        const { onHandleWeatherLocationClick } = this.props;
         const {city, data} = this.state;
         return(
-            <div className="weatherLocationCont">
+            <div className="weatherLocationCont" onClick={onHandleWeatherLocationClick} >
                 <Location city={city}></Location>
                 {data != null ?
                   <WeatherData data={data}/>:

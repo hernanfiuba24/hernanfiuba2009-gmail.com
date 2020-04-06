@@ -16,7 +16,6 @@ const icons = {
 };
 
 const getWeatherIcon = weatherState => {
-    console.log(weatherState);
     const icon = icons[weatherState];
     if (icon)
         return icon;
