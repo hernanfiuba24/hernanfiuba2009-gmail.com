@@ -26,12 +26,11 @@ class App extends Component {
 
   handleSelectedLocation = city => {
     console.log(`handleSelectedLocation: ${city}`);
-    this.setState({
-      city
-    });
+    this.setState({city});
   }
 
   render() {
+    console.log("render APP")
     const {city} = this.state;
     return (
       <Grid>
