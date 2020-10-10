@@ -23,19 +23,19 @@ const getWeatherIcon = weatherState => {
         return <WiDaySunny className="wiicon" size={sizeIcon} />;
 };
 
-const WeatherTempeture = ({ tempeture, weatherState}) => (
-    <div className="weatherTempetureCont"> 
+const WeatherTemperature = ({ temperature, weatherState}) => (
+    <div className="weatherTemperatureCont">
         {
             getWeatherIcon(weatherState)
         }
-        <span className="tempeture">{tempeture}</span>
-        <span className="tempetureType"> C°</span>
+        <span className="temperature">{temperature}</span>
+        <span className="temperatureType"> C°</span>
     </div>
-)
+);
 
-WeatherTempeture.prototype = {
-    tempeture : PropTypes.number.isRequired,
+WeatherTemperature.prototype = {
+    temperature : PropTypes.number.isRequired,
     weatherState : PropTypes.string.isRequired
 };
 
-export default WeatherTempeture;
+export default WeatherTemperature;
