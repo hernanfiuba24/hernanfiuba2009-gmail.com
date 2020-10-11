@@ -6,21 +6,22 @@ import transformForecastWeather from '../services/transformForecastWeather';
 
 class ForecastExtended extends Component {
 
-    constructor({city}) {
-        super();
+    constructor(props) {
+        super(props);
+        const {city} = props;
         this.state = {
-            forecastData : null,
+            forecastData: null,
             city,
         }
     }
-    
+
     componentDidMount() {
         this.updateCity(this.props.city)
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.city !== this.props.city) {
-            this.setState({forecastData:null});
+            this.setState({forecastData: null});
             this.updateCity(nextProps.city);
         }
     }
@@ -29,23 +30,23 @@ class ForecastExtended extends Component {
         const forecastWeatherUrl = getForecastWeatherByCity(city);
         fetch(forecastWeatherUrl).then(resolve => {
             return resolve.json();
-        }).then( data => {
+        }).then(data => {
             const forecastData = transformForecastWeather(data);
             this.setState({forecastData});
         })
-    }
+    };
 
-    renderForecastItemDays(forecastData) {
+    static renderForecastItemDays(forecastData) {
         return forecastData.map(forecast => (
-            <Forecastitem 
-                    key={`${forecast.weekDay}${forecast.hour}`}
-                    weekDay={forecast.weekDay}
-                    hour={forecast.hour}
-                    data={forecast.data}>
+            <Forecastitem
+                key={`${forecast.weekDay}${forecast.hour}`}
+                weekDay={forecast.weekDay}
+                hour={forecast.hour}
+                data={forecast.data}>
             </Forecastitem>))
     }
 
-    renderProgres() {
+    static renderProgress() {
         return <h3>Cargando pronostico extedido</h3>
     }
 
@@ -55,9 +56,9 @@ class ForecastExtended extends Component {
         return (
             <div>
                 <h2 className="forecast-title">Pronóstico extendido {city}</h2>
-                { forecastData ?
-                    this.renderForecastItemDays(forecastData) :
-                    this.renderProgres()      
+                {forecastData ?
+                    ForecastExtended.renderForecastItemDays(forecastData) :
+                    ForecastExtended.renderProgress()
                 }
             </div>
         )
