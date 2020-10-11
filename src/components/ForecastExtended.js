@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './styles.css';
-import Forecastitem from './ForecastItem';
+import ForecastItem from './ForecastItem';
 import getForecastWeatherByCity from '../services/getForecastWeatherByCity';
 import transformForecastWeather from '../services/transformForecastWeather';
 
@@ -19,10 +19,10 @@ class ForecastExtended extends Component {
         this.updateCity(this.props.city)
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.city !== this.props.city) {
-            this.setState({forecastData: null});
-            this.updateCity(nextProps.city);
+    componentDidUpdate(prevProps) {
+        if (prevProps.city !== this.props.city) {
+            this.setState({forecastData: null}); // Para que se muestre la barra de progreso miestras se completa el servicio
+            this.updateCity(this.props.city);
         }
     }
 
@@ -38,12 +38,12 @@ class ForecastExtended extends Component {
 
     static renderForecastItemDays(forecastData) {
         return forecastData.map(forecast => (
-            <Forecastitem
+            <ForecastItem
                 key={`${forecast.weekDay}${forecast.hour}`}
                 weekDay={forecast.weekDay}
                 hour={forecast.hour}
                 data={forecast.data}>
-            </Forecastitem>))
+            </ForecastItem>))
     }
 
     static renderProgress() {
